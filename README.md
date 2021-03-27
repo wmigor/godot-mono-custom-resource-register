@@ -3,6 +3,7 @@
 Register custom resources for Godot mono
 
 ## Example
+### Custom resource
 
 Script res://Example/LevelConfig.cs
 ```C#
@@ -39,6 +40,25 @@ Create LevelConfig.tres int context menu "New Resource...":
 Cerate PlayerConfig in LevelConfig.tres (Open LevelConfig.tres and create PlayerConfig):
 
 ![CreatePlayerConfig.png](CreatePlayerConfig.png)
+
+
+### Custom node
+
+```C#
+using Godot;
+
+namespace Example
+{
+	public class Enemy : KinematicBody2D
+	{
+
+	}
+}
+```
+
+Add Enemy in scene (context menu "Add Child Node")
+
+![AddEnemy.png](AddEnemy.png)
 
 ## Install
 

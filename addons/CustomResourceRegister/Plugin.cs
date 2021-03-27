@@ -14,26 +14,50 @@ namespace CustomResourceRegister
 		public override void _EnterTree()
 		{
 			Settings.Init();
-			RegisterCustomResources();
+			RegisterCustomClasses();
 		}
 
 		public override void _ExitTree()
 		{
-			UnregisterCustomResources();
+			UnregisterCustomClasses();
 		}
 
-		private void RegisterCustomResources()
+		private void RegisterCustomClasses()
 		{
 			_scripts.Clear();
 
+			var file = new File();
+
 			foreach (var type in GetCustomResourceTypes())
 			{
-				var path = $"{Settings.ScriptsFolder}/{type.Namespace?.Replace(".", "/") ?? ""}/{type.Name}.cs";
+				var path = ClassPath(type);
+				if (!file.FileExists(path))
+					continue;
 				var script = GD.Load<Script>(path);
+				if (script == null)
+					continue;
 				AddCustomType($"{Settings.ClassPrefix}{type.Name}", nameof(Resource), script, null);
 				GD.Print($"Register custom resource: {type.Name} -> {path}");
 				_scripts.Add(type.Name);
 			}
+
+			foreach (var type in GetCustomNodes())
+			{
+				var path = ClassPath(type);
+				if (!file.FileExists(path))
+					continue;
+				var script = GD.Load<Script>(path);
+				if (script == null)
+					continue;
+				AddCustomType($"{Settings.ClassPrefix}{type.Name}", nameof(Node), script, null);
+				GD.Print($"Register custom node: {type.Name} -> {path}");
+				_scripts.Add(type.Name);
+			}
+		}
+
+		private static string ClassPath(Type type)
+		{
+			return $"{Settings.ScriptsFolder}/{type.Namespace?.Replace(".", "/") ?? ""}/{type.Name}.cs";
 		}
 
 		private static IEnumerable<Type> GetCustomResourceTypes()
@@ -42,7 +66,14 @@ namespace CustomResourceRegister
 			return assembly.GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(Resource)));
 		}
 
-		private void UnregisterCustomResources()
+		private static IEnumerable<Type> GetCustomNodes()
+		{
+			var assembly = Assembly.GetAssembly(typeof(Plugin));
+			return assembly.GetTypes().Where(t =>
+				!t.IsAbstract && t.IsSubclassOf(typeof(Node)));
+		}
+
+		private void UnregisterCustomClasses()
 		{
 			foreach (var script in _scripts)
 			{
