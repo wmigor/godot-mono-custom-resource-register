@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "godot-mono-custom-resource-register", "godot-mono-custom-resource-register.csproj", "{907A3EF4-86F2-41E1-B97B-6F934A9F7774}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{907A3EF4-86F2-41E1-B97B-6F934A9F7774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907A3EF4-86F2-41E1-B97B-6F934A9F7774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907A3EF4-86F2-41E1-B97B-6F934A9F7774}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{907A3EF4-86F2-41E1-B97B-6F934A9F7774}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{907A3EF4-86F2-41E1-B97B-6F934A9F7774}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{907A3EF4-86F2-41E1-B97B-6F934A9F7774}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
