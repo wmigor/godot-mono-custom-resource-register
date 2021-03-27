@@ -10,16 +10,21 @@ namespace CustomResourceRegister
 	public class Plugin : EditorPlugin
 	{
 		private readonly List<string> _scripts = new List<string>();
+		private Control _control;
 
 		public override void _EnterTree()
 		{
 			Settings.Init();
 			RegisterCustomClasses();
+			_control = CreateBottomMenuControl();
+			AddControlToBottomPanel(_control, "CRR");
 		}
 
 		public override void _ExitTree()
 		{
 			UnregisterCustomClasses();
+			RemoveControlFromBottomPanel(_control);
+			_control = null;
 		}
 
 		private void RegisterCustomClasses()
@@ -82,6 +87,24 @@ namespace CustomResourceRegister
 			}
 
 			_scripts.Clear();
+		}
+
+		private Control CreateBottomMenuControl()
+		{
+			var container = new GridContainer()
+			{
+				RectMinSize = new Vector2(100, 100),
+			};
+			var button = new Button {Text = "Refresh"};
+			button.Connect("pressed", this, nameof(OnRefreshPressed));
+			container.AddChild(button);
+			return container;
+		}
+
+		private void OnRefreshPressed()
+		{
+			UnregisterCustomClasses();
+			RegisterCustomClasses();
 		}
 	}
 }
