@@ -5,13 +5,13 @@ namespace CustomResourceRegister
 {
 	public static class Settings
 	{
-		public static string ClassPrefix => GetSettings(nameof(ClassPrefix)).ToString();
 		public static string ScriptsFolder => GetSettings(nameof(ScriptsFolder)).ToString();
+		public static string ClassPrefix => GetSettings(nameof(ClassPrefix)).ToString();
 
 		public static void Init()
 		{
-			AddSetting(nameof(ClassPrefix), Variant.Type.String, "");
 			AddSetting(nameof(ScriptsFolder), Variant.Type.String, "res://");
+			AddSetting(nameof(ClassPrefix), Variant.Type.String, "");
 		}
 
 		private static object GetSettings(string title)
@@ -25,12 +25,12 @@ namespace CustomResourceRegister
 			if (ProjectSettings.HasSetting(title))
 				return;
 			ProjectSettings.SetSetting(title, value);
-			var hint = new Dictionary
+			var info = new Dictionary
 			{
 				["name"] = title,
 				["type"] = type
 			};
-			ProjectSettings.AddPropertyInfo(hint);
+			ProjectSettings.AddPropertyInfo(info);
 		}
 
 		private static string SettingPath(string title) => $"{nameof(CustomResourceRegister)}/{title}";
