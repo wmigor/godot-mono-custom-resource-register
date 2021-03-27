@@ -40,6 +40,10 @@ Cerate PlayerConfig in LevelConfig.tres (Open LevelConfig.tres and create Player
 
 ![CreatePlayerConfig.png](CreatePlayerConfig.png)
 
+## Install
+
+Clone this repository and move folder addons/CustomResourceRegister in {your project}/addons/
+
 ## Settings
 
 Project -> ProjectSettings -> General -> CustomResourceRegister:
