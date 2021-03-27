@@ -1,10 +1,22 @@
+# CustomResourceRegisterPlugin
+
 Register custom resources for Godot mono
 
-Settings (Open Project -> ProjectSettings -> General -> CustomResourceRegister:
-* ScriptsFolder - Scripts folder. The path to the script is calculated as follows: $"{ScriptsFolder}/{class.Namespace}/{class.Name}.cs"
-* ClassPrefix - Prefix the class name to sort in the inspector
+## Example
 
-Example:
+Script res://Example/LevelConfig.cs
+```C#
+using Godot;
+
+namespace Example
+{
+	public class LevelConfig : Resource
+	{
+		[Export]
+		public PlayerConfig PlayerConfig;
+	}
+}
+```
 
 Script res://Example/PlayerConfig.cs
 ```C#
@@ -15,13 +27,21 @@ namespace Example
 	public class PlayerConfig : Resource
 	{
 		[Export]
-		public int Health;
-
-		[Export]
 		public int Speed;
 	}
 }
 ```
 
-Context menu "New Resource...":
-![img.png](img.png)
+Create LevelConfig.tres int context menu "New Resource...":
+
+![img_1CreateLevelConfig.png](CreateLevelConfig.png)
+
+Cerate PlayerConfig in LevelConfig.tres (Open LevelConfig.tres and create PlayerConfig):
+
+![CreatePlayerConfig.png](CreatePlayerConfig.png)
+
+## Settings
+
+(Open Project -> ProjectSettings -> General -> CustomResourceRegister:
+* ScriptsFolder - Scripts folder. The path to the script is calculated as follows: $"{ScriptsFolder}/{class.Namespace}/{class.Name}.cs"
+* ClassPrefix - Prefix the class name to sort in the inspector
