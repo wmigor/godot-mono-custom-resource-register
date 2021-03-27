@@ -42,6 +42,6 @@ Cerate PlayerConfig in LevelConfig.tres (Open LevelConfig.tres and create Player
 
 ## Settings
 
-(Open Project -> ProjectSettings -> General -> CustomResourceRegister:
+Project -> ProjectSettings -> General -> CustomResourceRegister:
 * ScriptsFolder - Scripts folder. The path to the script is calculated as follows: $"{ScriptsFolder}/{class.Namespace}/{class.Name}.cs"
 * ClassPrefix - Prefix the class name to sort in the inspector
