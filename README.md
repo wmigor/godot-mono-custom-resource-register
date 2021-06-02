@@ -62,7 +62,10 @@ Add Enemy in scene (context menu "Add Child Node")
 
 ## Install
 
-Clone this repository and move folder addons/CustomResourceRegister in {your project}/addons/
+- clone this repository and move folder addons/CustomResourceRegister in {your project}/addons/
+- add this folder to project in IDE
+- build solution
+- enable addon in settings
 
 ## Settings
 
