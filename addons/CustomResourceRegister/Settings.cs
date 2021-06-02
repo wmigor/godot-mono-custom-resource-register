@@ -1,3 +1,4 @@
+#if TOOLS
 using Godot;
 using Godot.Collections;
 
@@ -36,3 +37,4 @@ namespace CustomResourceRegister
 		private static string SettingPath(string title) => $"{nameof(CustomResourceRegister)}/{title}";
 	}
 }
+#endif
