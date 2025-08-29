@@ -1,6 +1,6 @@
 # CustomResourceRegisterPlugin
 
-Register custom resources for Godot mono
+Register custom resources for Godot mono. The plugin is developing here https://github.com/Atlinx/Godot-Mono-CustomResourceRegistry
 
 ## Example
 ### Custom resource
